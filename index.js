@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const generateHtml = require("./src/generateHtml");
 
 const questions = [
 // manager question section
@@ -80,6 +81,28 @@ const internQuestions = [
     },
 ];
 
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, generateHtml(data), (err) => err ? console.log(err):console.log("SUCCESS!"))
+}
+
+// TODO: Create a function to initialize app
+function init() {
+    inquirer 
+    .prompt(questions)
+     
+    .then((response) => {
+        console.log(response)
+       
+        writeToFile("index.html", response);
+   
+    
+    }
+    
+    );
+}
+
+// Function call to initialize app
+init();
 
 
 
