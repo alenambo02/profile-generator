@@ -32,6 +32,31 @@ const questions = [
     },
 ];
 
+// engineer question section
+const engineerQuestions = [
+    {
+        type: 'input',
+        message: 'What is your engineers name?',
+        name: 'engineername',
+    },
+    {
+        type: 'input',
+        message: 'What is your engineers ID',
+        name: 'engineerid',
+    },
+    {
+        type: 'input',
+        message: 'What is your engineers email?',
+        name: 'engineeremail',
+    },
+    {
+        type: 'input',
+        message: 'What is your engineers Github username?',
+        name: 'engineergithub',
+    },
+];
+
+
 
 
 
