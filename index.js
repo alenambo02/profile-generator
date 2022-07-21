@@ -123,7 +123,7 @@ function init() {
         teamMembers.push(manager)
         buildTeam();
        
-        writeToFile("index.html", response);
+        // writeToFile("index.html", response);
    
     
     }
