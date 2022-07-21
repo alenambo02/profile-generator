@@ -31,7 +31,8 @@ const managerQuestions = [
     },
 ];
 // this prompt message creates a list of types of employees to add
-   const employeeType = [
+ 
+const employeeType = [
     {
         type: 'list',
         message: 'Which type of team member would you like to add?',
@@ -122,7 +123,7 @@ function init() {
         teamMembers.push(manager)
         buildTeam();
        
-        // writeToFile("index.html", response);
+        writeToFile("index.html", response);
    
     
     }
@@ -142,13 +143,25 @@ function buildTeam (){
                 case "Intern":
                     createIntern()
                     break;
-                
-
+                default:
+                createTeam()
             }
 
         })
     
 }
+
+// check in with tutor if function is correct 
+//should employeetype also be function
+function createTeam() {
+    if(userChoice.employeeType === createEngineer){
+        return teamMembers
+    }
+    if(userChoice.employeeType === createIntern){
+        return teamMembers
+    }
+}
+
 // Function call to initialize app
 init();
 
