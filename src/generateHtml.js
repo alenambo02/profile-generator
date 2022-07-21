@@ -5,6 +5,7 @@
 
 
 function generateHtml(data) {
+    console.log(data)
     return ` 
     <!DOCTYPE html>
     <html lang="en">
@@ -19,7 +20,7 @@ function generateHtml(data) {
 
     <body>
     <header>My Team</header>
-    <h2>${data.managerName}</h2> 
+  
     <h3>ID: ${data.managerId}</h3>
     <h3>Email: ${data.managerEmail}</h3>
     <h3>Office number: ${data.managerOffice}</h3>

@@ -7,7 +7,10 @@ const Intern = require("./lib/Intern");
 
 const teamMembers = []
 
-const managerQuestions = [
+
+function createManager() {
+    inquirer
+    .prompt([
 // manager question section
     {
         type: 'input',
@@ -29,7 +32,16 @@ const managerQuestions = [
         message: 'What is the team managers office number?',
         name: 'managerOffice',
     },
-];
+    ]).then((answers) => {
+    console.log(answers)
+
+    const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice)
+    teamMembers.push(manager)
+    buildTeam();
+    
+})
+}
+
 // this prompt message creates a list of types of employees to add
  
 const employeeType = [
@@ -69,8 +81,9 @@ function createEngineer(){
     .then((answers) => {
     console.log(answers)
 
-    const engineer = new Engineer (answer.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGithub)
+    const engineer = new Engineer (answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub)
     teamMembers.push(engineer)
+    buildTeam();
     })
 };
 
@@ -102,9 +115,11 @@ function createIntern() {
     .then((answers) => {
         console.log(answers)
     
-        const intern = new Intern (answers.internName, answers.internID, answers.internEmail, answers.internSchool)
+        const intern = new Intern (answers.internName, answers.internId, answers.internEmail, answers.internSchool)
         teamMembers.push(intern)
-        })
+        buildTeam();
+    })
+       
 };
 
 function writeToFile(fileName, data) {
@@ -113,25 +128,11 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer 
-    .prompt(managerQuestions)
-     
-    .then((answers) => {
-        console.log(answers)
-
-        const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOffice)
-        teamMembers.push(manager)
-        buildTeam();
-       
-        // writeToFile("index.html", response);
-   
-    
-    }
-    
-    );
+        createManager();
+         
 }
 
-function buildTeam (){
+function buildTeam() {
     inquirer
         .prompt(employeeType)
     
@@ -143,32 +144,15 @@ function buildTeam (){
                 case "Intern":
                     createIntern()
                     break;
-                default:
-                createTeam()
+                case "None":
+                 writeToFile(`./dist/team_${teamMembers[0].getName()}.html`, teamMembers);
+                 default:
+                 writeToFile(`./dist/team_${teamMembers[0].getName()}.html`, teamMembers);
             }
 
         })
     
 }
 
-// check in with tutor if function is correct 
-//should employeetype also be function
-function createTeam() {
-    if(userChoice.employeeType === createEngineer){
-        return teamMembers
-    }
-    if(userChoice.employeeType === createIntern){
-        return teamMembers
-    }
-}
-
-// Function call to initialize app
 init();
-
-//in switch statment our default needs to be a function that actually creates our team 
-//create test/watch youtube vid on jest 
-//figure out what methods i will need inside my classes
-// what does my team array do? create a function to display team members
-
-
 
