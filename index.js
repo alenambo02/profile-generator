@@ -1,85 +1,110 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateHtml = require("./src/generateHtml");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
-const questions = [
+const teamMembers = []
+
+const managerQuestions = [
 // manager question section
     {
         type: 'input',
         message: 'What is the team managers name?',
-        name: 'managername',
+        name: 'managerName',
     },
     {
         type: 'input',
         message: 'What is the team managers id?',
-        name: 'managerid',
+        name: 'managerId',
     },
     {
         type: 'input',
         message: 'What is the team managers email?',
-        name: 'manageremail',
+        name: 'managerEmail',
     },
     {
         type: 'input',
         message: 'What is the team managers office number?',
-        name: 'manageroffice',
+        name: 'managerOffice',
     },
+];
 // this prompt message creates a list of types of employees to add
+   const employeeType = [
     {
         type: 'list',
         message: 'Which type of team member would you like to add?',
-        name: 'employeetype',
+        name: 'employeeType',
         choices: ['Engineer', 'Intern', 'None'],
     },
 ];
 
 // engineer question section
-const engineerQuestions = [
+function createEngineer(){
+    inquirer
+    .prompt([
     {
         type: 'input',
         message: 'What is your engineers name?',
-        name: 'engineername',
+        name: 'engineerName',
     },
     {
         type: 'input',
         message: 'What is your engineers ID',
-        name: 'engineerid',
+        name: 'engineerId',
     },
     {
         type: 'input',
         message: 'What is your engineers email?',
-        name: 'engineeremail',
+        name: 'engineerEmail',
     },
     {
         type: 'input',
         message: 'What is your engineers Github username?',
-        name: 'engineergithub',
+        name: 'engineerGithub',
     },
-];
+    ])
+    .then((answers) => {
+    console.log(answers)
+
+    const engineer = new Engineer (answer.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGithub)
+    teamMembers.push(engineer)
+    })
+};
 
 // intern question section
-const internQuestions = [
+function createIntern() {
+    inquirer
+    .prompt([
     {
         type: 'input',
         message: 'What is your interns name?',
-        name: 'internname',
+        name: 'internName',
     },
     {
         type: 'input',
         message: 'What is your interns ID?',
-        name: 'internid',
+        name: 'internId',
     },
     {
         type: 'input',
         message: 'What is your interns email?',
-        name: 'internemail',
+        name: 'internEmail',
     },
     {
         type: 'input',
         message: 'What is your intens school?',
-        name: 'internschool',
+        name: 'internSchool',
     },
-];
+    ])
+    .then((answers) => {
+        console.log(answers)
+    
+        const intern = new Intern (answers.internName, answers.internID, answers.internEmail, answers.internSchool)
+        teamMembers.push(intern)
+        })
+};
 
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateHtml(data), (err) => err ? console.log(err):console.log("SUCCESS!"))
@@ -88,12 +113,16 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer 
-    .prompt(questions)
+    .prompt(managerQuestions)
      
-    .then((response) => {
-        console.log(response)
+    .then((answers) => {
+        console.log(answers)
+
+        const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOffice)
+        teamMembers.push(manager)
+        buildTeam();
        
-        writeToFile("index.html", response);
+        // writeToFile("index.html", response);
    
     
     }
@@ -101,10 +130,32 @@ function init() {
     );
 }
 
+function buildTeam (){
+    inquirer
+        .prompt(employeeType)
+    
+        .then((userChoice) => {
+            switch(userChoice.employeeType) {
+                case "Engineer": 
+                    createEngineer()
+                    break;
+                case "Intern":
+                    createIntern()
+                    break;
+                
+
+            }
+
+        })
+    
+}
 // Function call to initialize app
 init();
 
-
+//in switch statment our default needs to be a function that actually creates our team 
+//create test/watch youtube vid on jest 
+//figure out what methods i will need inside my classes
+// what does my team array do? create a function to display team members
 
 
 
