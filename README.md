@@ -32,9 +32,26 @@
   ## Usage:
   You will be prompted with questions inside the command line to help you generate your team. You can either answer the question or leave it blank to move on to the next question. Your answers to the questions will then be generated below the correct section of employee type you choose to create. Once you are done adding team members to your template a html file will be generated for you. Once this is opened on the browser you will be displayed with cards of each team member you added. This design was done utilizing bootstrap. 
   
-  Here you can see how I have used 
+  Here you can see how I have used switch statements to create the employee choosen:
   ```
-  fs.writeFile
+  function buildTeam() {
+    inquirer
+        .prompt(employeeType)
+    
+        .then((userChoice) => {
+            switch(userChoice.employeeType) {
+                case "Engineer": 
+                    createEngineer()
+                    break;
+                case "Intern":
+                    createIntern()
+                    break;
+                case "None":
+                 writeToFile(`./dist/team_${teamMembers[0].getName()}.html`, teamMembers);
+                 default: ""
+            }
+        })
+  }
   ```
   
   ![alt text](./assets/function.png)

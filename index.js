@@ -150,7 +150,7 @@ function buildTeam() {
             }
 
         })
-    
+
 }
 
 init();
