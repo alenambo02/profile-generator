@@ -1,3 +1,8 @@
+function changeData(data) {
+    console.log(data)
+    
+    console.log(engineer)
+}
 
 
 
@@ -5,7 +10,9 @@
 
 
 function generateHtml(data) {
-    console.log(data)
+    const engineer = data.filter((engineer)=> {return engineer.getRole() === "Engineer"})
+    const intern = data.filter((intern)=> {return intern.getRole() === "Intern"})
+    
     return ` 
     <!DOCTYPE html>
     <html lang="en">
@@ -17,27 +24,34 @@ function generateHtml(data) {
     <link rel="stylesheet" href="./assets/style.css" >
     <title>Profile Generator</title>
     </head>
-
+    
     <body>
     <header>My Team</header>
-  
-    <h3>ID: ${data.managerId}</h3>
-    <h3>Email: ${data.managerEmail}</h3>
-    <h3>Office number: ${data.managerOffice}</h3>
-
-
     
-    <h2>${data.engineerName}</h2> 
-    <h3>ID: ${data.engineerId}</h3>
-    <h3>Email: ${data.engineerEmail}</h3>
-    <h3>Office number: ${data.engineerGithub}</h3>
-
-
-    <h2>${data.internName}</h2> 
-    <h3>ID: ${data.internId}</h3>
-    <h3>Email: ${data.internEmail}</h3>
-    <h3>Office number: ${data.internSchool}</h3>
     
+    <h3>Name: ${data[0].getName()}</h3>
+    <h2>Role: ${data[0].getRole()}</h2> 
+    <h3>ID: ${data[0].getId()}</h3>
+    <h3>Email: ${data[0].getEmail()}</h3>
+    <h3>Office number: ${data[0].getOfficeNumber()}</h3>
+
+
+    ${engineer.map((i) => {return `
+    <h2>Name: ${i.getName()}</h2> 
+    <h2>Role: ${i.getRole()}</h2> 
+    <h3>ID: ${i.getId()}</h3>
+    <h3>Email: ${i.getEmail()}</h3>
+    <h3>Github: ${i.getGithub()}</h3>
+    `})}
+
+
+    ${intern.map((i) => {return `
+    <h2>Name: ${i.getName()}</h2> 
+    <h2>Role: ${i.getRole()}</h2> 
+    <h3>ID: ${i.getId()}</h3>
+    <h3>Email: ${i.getEmail()}</h3>
+    <h3>School: ${i.getSchool()}</h3>
+    `})}
     
     </body>
     </html>

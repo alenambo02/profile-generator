@@ -33,7 +33,7 @@ function createManager() {
         name: 'managerOffice',
     },
     ]).then((answers) => {
-    console.log(answers)
+    // console.log(answers)
 
     const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice)
     teamMembers.push(manager)
@@ -79,7 +79,7 @@ function createEngineer(){
     },
     ])
     .then((answers) => {
-    console.log(answers)
+    // console.log(answers)
 
     const engineer = new Engineer (answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub)
     teamMembers.push(engineer)
@@ -113,7 +113,7 @@ function createIntern() {
     },
     ])
     .then((answers) => {
-        console.log(answers)
+        // console.log(answers)
     
         const intern = new Intern (answers.internName, answers.internId, answers.internEmail, answers.internSchool)
         teamMembers.push(intern)
@@ -146,8 +146,7 @@ function buildTeam() {
                     break;
                 case "None":
                  writeToFile(`./dist/team_${teamMembers[0].getName()}.html`, teamMembers);
-                 default:
-                 writeToFile(`./dist/team_${teamMembers[0].getName()}.html`, teamMembers);
+                 default: ""
             }
 
         })
