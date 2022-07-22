@@ -1,20 +1,20 @@
 const Employee = require("../lib/Employee");
 
 describe("Employee", () => {
-    describe("Initalization", () => {
-    it('should created a new employee with name, id, and email', () => {
-        const teamMember = new Employee("Sally", "2", "sally@gmail.com");
-   
-        expect(teamMember).toEqual()
+    describe("Initilization", () => {
+        it('should return create the id, name, and email', () => {
+    
+        const employeeMain = new Employee ("John", 21, "john@gmail.com", "San Jose State")
+     
+
+        expect(typeof(employeeMain)).toBe("object")
+        });
+    
+    }) 
+    })
         
-    const employeeName = "Bob";
-    const employeeId = "2";
-    const employeeEmail = "bob2@gmail.com"
-
+   
  
-    });
-})
 
-})
 
 

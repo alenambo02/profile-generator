@@ -2,9 +2,31 @@ const Engineer = require("../lib/Engineer");
 
 describe("Engineer", () => {
     describe(" ", () => {
-    it('is created with name, id, and email');
+    it('should return getrole for engineer', () => {
 
-    expect(Engineer).toEqual("teamMembers")
+        const type = "Engineer"
+        const engineer = new Engineer ("Paul", 25, "paul@gmail.com", "paul@github.com")
+ 
+    expect(engineer.getRole()).toBe(type)
     });
 
+}) 
+})
+
+
+
+
+
+
+describe("Engineer", () => {
+    describe(" ", () => {
+    it('should get school', () => {
+
+    const github = "paul@github.com"
+    const engineer = new Engineer ("Paul", 25, "paul@gmail.com", "paul@github.com")
+ 
+    expect(engineer.getGithub()).toBe(github)
+    });
+
+}) 
 })

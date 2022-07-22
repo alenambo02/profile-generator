@@ -1,8 +1,8 @@
-function changeData(data) {
-    console.log(data)
+// function changeData(data) {
+//     console.log(data)
     
-    console.log(engineer)
-}
+//     console.log(engineer)
+// }
 
 
 
@@ -21,37 +21,40 @@ function generateHtml(data) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/style.css" >
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Profile Generator</title>
     </head>
     
     <body>
-    <header>My Team</header>
+    <header id ="head" >My Team</header>
     
+    <div class="row">
+        <div class= "col card shadow-lg p-3 mb-5 bg-body rounded">
+        <h3>Name: ${data[0].getName()}</h3>
+        <h2>Role: ${data[0].getRole()}</h2> 
+        <h3>ID: ${data[0].getId()}</h3>
+        <h3>Email: ${data[0].getEmail()}</h3>
+        <h3>Office number: ${data[0].getOfficeNumber()}</h3>
+        </div>
     
-    <h3>Name: ${data[0].getName()}</h3>
-    <h2>Role: ${data[0].getRole()}</h2> 
-    <h3>ID: ${data[0].getId()}</h3>
-    <h3>Email: ${data[0].getEmail()}</h3>
-    <h3>Office number: ${data[0].getOfficeNumber()}</h3>
+        <div class= "col card shadow-lg p-3 mb-5 bg-body rounded">
+        ${engineer.map((i) => {return `
+        <h2>Name: ${i.getName()}</h2> 
+        <h2>Role: ${i.getRole()}</h2> 
+        <h3>ID: ${i.getId()}</h3>
+        <h3>Email: ${i.getEmail()}</h3>
+        <h3>Github: ${i.getGithub()}</h3>
+        `})} </div>
 
-
-    ${engineer.map((i) => {return `
-    <h2>Name: ${i.getName()}</h2> 
-    <h2>Role: ${i.getRole()}</h2> 
-    <h3>ID: ${i.getId()}</h3>
-    <h3>Email: ${i.getEmail()}</h3>
-    <h3>Github: ${i.getGithub()}</h3>
-    `})}
-
-
-    ${intern.map((i) => {return `
-    <h2>Name: ${i.getName()}</h2> 
-    <h2>Role: ${i.getRole()}</h2> 
-    <h3>ID: ${i.getId()}</h3>
-    <h3>Email: ${i.getEmail()}</h3>
-    <h3>School: ${i.getSchool()}</h3>
-    `})}
+        <div class= "col card shadow-lg p-3 mb-5 bg-body rounded">
+        ${intern.map((i) => {return `
+        <h2>Name: ${i.getName()}</h2> 
+        <h2>Role: ${i.getRole()}</h2> 
+        <h3>ID: ${i.getId()}</h3>
+        <h3>Email: ${i.getEmail()}</h3>
+        <h3>School: ${i.getSchool()}</h3>
+        `})} </div>
+    </div>
     
     </body>
     </html>
