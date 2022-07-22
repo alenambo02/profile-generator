@@ -109,14 +109,4 @@ const generateIntern = intern => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = generateHtml;

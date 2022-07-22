@@ -53,10 +53,6 @@
         })
   }
   ```
-  
-  ![alt text](./assets/function.png)
-
-
 
   ## Credits:
   Helpful video: https://www.youtube.com/watch?v=Jv2uxzhPFl4&t=565s
