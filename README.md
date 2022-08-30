@@ -15,18 +15,18 @@
 
   You can see the profile generator layout below:
 
-   ![alt text](./assets/profile%20image.png)
+   ![alt text](./dist/assets/profile%20image.png)
 
   ## Installation:
   In order to be able to utilize this generator within your command line, you would have to install node.js, npm inquirer package, and jest. Npm inquirer package allows for prompts to be displayed to you within the command line. For this project, I utilized jest to test my code, therefore if I later make changes to my code I can do it with ease. I will be able to see were my code is breaking and have a better understanding of what to fix. 
 
   Below, I have displayed how I utilized inquirer to prompt questions within the command line:
 
-   ![alt text](./assets/prompts%20for%20profile.png)
+   ![alt text](./dist/assets/prompts%20for%20profile.png)
 
   Below, I have displayed how I utilized jest to test my code within the command line:
 
-  ![alt text](./assets/test.png)
+  ![alt text](./dist/assets/test.png)
 
 
   ## Usage:
